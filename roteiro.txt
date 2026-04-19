@@ -1,0 +1,112 @@
+---------------------- Descrição do Problema -----------------------------------------
+  Criar um programa que permita cadastrar colaboradores e calcular o salário final de acordo com o tipo de vínculo. O sistema deverá ser interativo, utilizando entrada e saida de dados, estruturas de decisão, laços de repetição, estruturas de seleção e armazenamento das informações em listas (ArrayList).
+
+Conceitos que devem ser aplicados:
+  - Tipos de dados primitivos e compostos
+  - Declaração e utilização de constantes e variáveis
+  - Entrada e saida de dados (Scanner e System.out) 
+  - Processamento de informações e cálculos matemáticos
+  - Uso de estruturas condicionais (if, else if, switch)
+  - Estruturas de repetição (for, while, do-while)
+  - Estrutura de seleção para escolha de opções no menu
+  - Manipulação de ArrayList
+  - Organização do código com classes e métodos simples
+
+---------------------- Sistema IPO -----------------------------------------
+Entrada (Input):
+  Tipo de entrada -> Scanner:
+    Dados à receber:
+      - Informações do funcionário (Nome(string), matrícula(int), salário(double), vínculo(string))
+      - Funcionário CLT (Convênio de Saúde(boolean), VT(boolean), VR(boolean))
+      - Funcionário Comissionado (Benefícios da CLT, vendas(double) no mês e comissão(int))
+      - Tipo de opção (Cadastro, listagem por vínculo, remoção de funcionário)
+
+    Processamento (Processing):
+      1 - Registrar as informações do funcionário em uma classe dedicada de acordo com o vínculo:
+        Classe funcionário:
+        - Atributos: Nome, matrícula, salário, vínculo, Benefícios aceitos
+        - Métodos:
+          - Construtor da classe
+          - Getters e Setters
+
+        Classe funcionário CLT (herda da classe funcionário):
+        - Atributos: Mesmos da classe base
+        - Métodos:
+          - Getters e Setters
+          - Calcular salário menos benefícios aceitos pelo funcionário
+
+        Classe funcionário comissionado (herda da classe funcionário):
+        - Atributos: Mesmos da classe base, valor de comissão, vendas realizadas no mês
+        - Métodos:
+          - Getters e Setters
+          - Calcular salário menos benefícios aceitos pelo funcionário mais comissão
+
+      2 - Objetos complementares necessárias:
+        Classe sessão:
+          - Atributos: Etapa atual
+          - Métodos:
+            - Construtor da classe
+            - Getters e setters
+
+        Classe benefícios:
+          - Atributos: Convênio de Saúde, VT(6% do salário), VR (Valores) Métodos: Construtor da classe
+            - Getters e Setters
+
+        Listas de Funcionários:
+          - Adicionar funcionários de acordo com a classe base
+          - Listar funcionários de acordo com vínculo
+          - Impedir matrículas repetidas
+                  -------- Opcionais --------
+          - Listar funcionários de acordo com salário
+          - Listar funcionários de acordo com volume de vendas
+
+    Saída (Output):
+      - Menu inicial:
+        1- Cadastrar Funcionários
+        2- Listar Funcionários
+        3- Remover funcionários
+        4- Sair
+
+      1- Menu cadastro:
+        1- Cadastrar CLT
+        2- Cadastrar comissionado
+        3- Menu anterior
+
+        - Cadastro CLT:
+          - Insira o nome do funcionário
+          - Insira a matrícula do funcionário
+          - Insira o salário do funcionário
+          - Funcionário optou por convênio de saúde? [s/n]
+          - Funcionário optou por VT? [s/n]
+          - Funcionário optou por VR? [s/n]
+
+        - Cadastro comissionado:
+          - Mesmas opções do CLT
+          - Qual a comissão desse funcionário? (int)
+          - Quanto o funcionário vendeu?
+
+      2- Menu Listar:
+        1- Listar funcionários CLT
+        2- Listar funcionários comissionados
+        3- Listar todos os funcionários
+        4- Menu anterior
+
+      3- Remover funcionário:
+        - Digite o nome ou a matŕicula do funcionário
+
+
+---------------------- Testes -----------------------------------------
+  - Testar cadastro correto
+  - Testar cadastros com informações inválidos
+  - Testar remover funcionários
+  - Testar listar funcionários
+  - Testar cadastro sem benefícios
+  - Testar remover funcionário
+
+---------------------- Metodologia -----------------------------------------
+1- Bloco try_catch no arquivo principal
+2- Throw runtime errors com tratamento na raiz
+3- Lógica para validar a atual etapa do usuário:
+  - Criar classe sessão ao inćio da execução
+  - Separar cada opção do menu em classes dedicadas
+  - Usar um bloco switch que verifica o estado atual ao receber um input do menu
