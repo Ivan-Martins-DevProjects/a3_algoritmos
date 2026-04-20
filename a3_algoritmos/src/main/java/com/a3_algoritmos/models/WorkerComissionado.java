@@ -15,7 +15,7 @@ public class WorkerComissionado extends Worker {
       boolean vt) {
 
     super(nome, matricula, salario, convenioSaude, vr, vt);
-    this.vinculo = "comissionado";
+    this.vinculo = "Comissionado";
     this.comissao = comissao;
     this.vendas = vendas;
   }
@@ -30,8 +30,16 @@ public class WorkerComissionado extends Worker {
   }
 
   private double calcularComissao() {
-    double saldoVendas = vendas * (comissao / 100);
+    double saldoVendas = vendas * (comissao / 100.0);
 
     return saldoVendas;
+  }
+
+  public int getComissao() {
+    return comissao;
+  }
+
+  public double getVendas() {
+    return vendas;
   }
 }
