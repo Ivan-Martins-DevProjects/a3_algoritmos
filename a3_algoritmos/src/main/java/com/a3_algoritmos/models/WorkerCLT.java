@@ -6,14 +6,12 @@ public class WorkerCLT extends Worker {
       String nome,
       int matricula,
       double salario,
-      int comissao,
-      double vendas,
       boolean convenioSaude,
       boolean vr,
       boolean vt) {
 
     super(nome, matricula, salario, convenioSaude, vr, vt);
-    this.vinculo = "clt";
+    this.vinculo = "CLT";
   }
 
   public double calcularSalario() {
