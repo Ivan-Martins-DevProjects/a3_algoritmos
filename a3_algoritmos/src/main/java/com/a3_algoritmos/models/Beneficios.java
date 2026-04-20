@@ -23,8 +23,8 @@ public class Beneficios {
     return vrDiscount;
   }
 
-  public int getVtDiscount() {
-    return vtDiscount;
+  public double getVtDiscount() {
+    return vtDiscount / 100.0;
   }
 
   public boolean getConvenio() {
