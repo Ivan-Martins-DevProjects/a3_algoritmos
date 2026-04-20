@@ -5,7 +5,7 @@ public class Worker {
   protected String vinculo;
   protected int matricula;
   protected double salario;
-  protected Beneficios beneficios;
+  public Beneficios beneficios;
 
   public Worker(
       String nome,
@@ -21,11 +21,16 @@ public class Worker {
     this.beneficios = new Beneficios(convenioSaude, vr, vt);
   }
 
-  protected double salarioComDescontos() {
+  public double getDiscounts() {
     double convenioMaisVr = beneficios.getConvenioDiscount() + beneficios.getVrDiscount();
     double valorVt = salario * beneficios.getVtDiscount();
 
-    double salarioFinal = salario - convenioMaisVr - valorVt;
+    return convenioMaisVr + valorVt;
+  }
+
+  protected double salarioComDescontos() {
+
+    double salarioFinal = salario - getDiscounts();
 
     return salarioFinal;
   }
